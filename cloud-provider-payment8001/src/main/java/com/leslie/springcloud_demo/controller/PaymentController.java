@@ -3,20 +3,22 @@ package com.leslie.springcloud_demo.controller;
 import com.leslie.springcloud_demo.entities.CommonResult;
 import com.leslie.springcloud_demo.entities.Payment;
 import com.leslie.springcloud_demo.service.PaymentService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
+@Slf4j
 public class PaymentController {
 
     @Autowired
     private PaymentService paymentService;
 
     @PostMapping("/payment")
-    public CommonResult add(Payment payment){
+    public CommonResult add(@RequestBody Payment payment){
+
+        log.info(payment.toString());
+
         Integer result = paymentService.add(payment);
 
         if (result >= 1)
