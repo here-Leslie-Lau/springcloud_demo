@@ -1,6 +1,12 @@
 server:
   port: 7001
 
+#spring:
+#  security:
+#    user:
+#      name: admin
+#      password: admin
+
 eureka:
   instance:
     # eureka 服务端的实例名称
@@ -12,4 +18,4 @@ eureka:
     fetch-registry: false
     service-url:
       # 设置与 Eureka Server 交互的地址查询服务和注册服务都需要依赖的这个地址
-      defaultZone: http://eureka7002.com:7002
+      defaultZone: http://eureka7002.com:7002/eureka/
