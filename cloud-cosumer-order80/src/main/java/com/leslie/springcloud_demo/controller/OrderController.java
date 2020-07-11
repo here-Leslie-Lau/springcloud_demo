@@ -6,6 +6,7 @@ import com.leslie.springcloud_demo.entities.CommonResult;
 import com.leslie.springcloud_demo.entities.Payment;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -16,7 +17,7 @@ public class OrderController {
     @Autowired
     private RestTemplate restTemplate;
 
-    public static final String payment_url = "http://localhost:8001";
+    public static final String payment_url = "http://CLOUD-PAYMENT-SERVICE";
 
     @PostMapping("/consumer/payment")
     public CommonResult addPayment(Payment payment){
