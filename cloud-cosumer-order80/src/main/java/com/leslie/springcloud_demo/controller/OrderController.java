@@ -1,10 +1,11 @@
 package com.leslie.springcloud_demo.controller;
 
-import com.leslie.springcloud_demo.entites.CommonResult;
-import com.leslie.springcloud_demo.entites.Payment;
+
+
+import com.leslie.springcloud_demo.entities.CommonResult;
+import com.leslie.springcloud_demo.entities.Payment;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
