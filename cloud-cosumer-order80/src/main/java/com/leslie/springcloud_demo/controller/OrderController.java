@@ -7,6 +7,7 @@ import com.leslie.springcloud_demo.entities.Payment;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -36,4 +37,17 @@ public class OrderController {
         return forObject;
     }
 
+    //测试getForEntity
+    @GetMapping("/consumer/payment/getForEntity/{id}")
+    public CommonResult getPaymentById2(@PathVariable Long id){
+        ResponseEntity<CommonResult> responseEntity = restTemplate.getForEntity(payment_url + "/payment/" + id, CommonResult.class);
+
+        log.info(responseEntity.getHeaders()+responseEntity.getStatusCode().toString());
+
+        if (responseEntity.getStatusCode().is2xxSuccessful())
+            return responseEntity.getBody();
+
+        else
+            return new CommonResult(404,"查询失败");
+    }
 }
