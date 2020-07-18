@@ -41,4 +41,9 @@ public class PaymentController {
         else
             return new CommonResult(404,"查询失败,失败id:"+id);
     }
+
+    @GetMapping("/payment/port")
+    public String getPort(){
+        return port;
+    }
 }
