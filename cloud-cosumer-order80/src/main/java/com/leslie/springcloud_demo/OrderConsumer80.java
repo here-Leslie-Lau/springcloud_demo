@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.ribbon.RibbonClient;
 
 @SpringBootApplication
-@RibbonClient(name = "CLOUD-PAYMENT-SERVICE",configuration = SelfRule.class)
+//@RibbonClient(name = "CLOUD-PAYMENT-SERVICE",configuration = SelfRule.class)
 public class OrderConsumer80 {
     public static void main(String[] args) {
         SpringApplication.run(OrderConsumer80.class,args);

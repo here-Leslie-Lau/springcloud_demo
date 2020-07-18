@@ -2,11 +2,15 @@ package com.leslie.springcloud_demo.controller;
 
 
 
+import com.leslie.springcloud_demo.customizedLoadBalance.LoadBalancer;
 import com.leslie.springcloud_demo.entities.CommonResult;
 import com.leslie.springcloud_demo.entities.Payment;
+import com.netflix.discovery.converters.Auto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -19,6 +23,12 @@ public class OrderController {
     private RestTemplate restTemplate;
 
     public static final String payment_url = "http://CLOUD-PAYMENT-SERVICE";
+
+    @Autowired
+    private LoadBalancer loadBalancer;
+
+    @Autowired
+    private DiscoveryClient discoveryClient;
 
     @PostMapping("/consumer/payment")
     public CommonResult addPayment(Payment payment){
@@ -49,5 +59,15 @@ public class OrderController {
 
         else
             return new CommonResult(404,"查询失败");
+    }
+
+    //测试自定义的轮询算法
+    @GetMapping("/consumer/payment/port")
+    public String getPort(){
+        ServiceInstance choose = loadBalancer.choose(discoveryClient.getInstances("CLOUD-PAYMENT-SERVICE"));
+
+        String port = restTemplate.getForObject(choose.getUri() + "/payment/port", String.class);
+
+        return port;
     }
 }

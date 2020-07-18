@@ -10,7 +10,7 @@ public class ApplicationContext {
 
     //将RestTemplate添加至容器中
     @Bean
-    @LoadBalanced //对ResetTemplate添加负载均衡,默认采用轮转算法
+    //@LoadBalanced //对ResetTemplate添加负载均衡,默认采用轮转算法
     public RestTemplate restTemplate(){
         return new RestTemplate();
     }
