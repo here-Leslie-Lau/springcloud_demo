@@ -16,3 +16,9 @@ eureka:
   instance:
     prefer-ip-address: true #在访问地址显示ip地址
     instance-id: consumer-feign-order80
+
+ribbon:
+  #创建连接最大时间
+  ReadTimeout: 5000
+  #接受数据最大时间
+  ConnectTimeout: 5000
