@@ -22,3 +22,6 @@ ribbon:
   ReadTimeout: 5000
   #接受数据最大时间
   ConnectTimeout: 5000
+logging:
+  level:
+    com.leslie.springcloud_demo.service.PaymentFeignService: debug
