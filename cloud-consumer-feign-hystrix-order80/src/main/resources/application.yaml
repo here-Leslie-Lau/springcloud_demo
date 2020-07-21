@@ -1,0 +1,16 @@
+server:
+  port: 80
+
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka
+  instance:
+    prefer-ip-address: true #在访问地址显示ip地址
+    instance-id: consumer-feign-hystrix-order80
+
+spring:
+  application:
+    name: consumer-feign-hystrix-order
