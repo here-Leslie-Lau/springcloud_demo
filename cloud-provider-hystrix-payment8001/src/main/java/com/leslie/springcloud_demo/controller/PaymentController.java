@@ -29,9 +29,6 @@ public class PaymentController {
     }
 
     @GetMapping("/hystrix/timeout/{id}")
-    @HystrixCommand(fallbackMethod = "paymentInfo_TimeoutHandler",commandProperties = {
-            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds",value = "2000")
-    })
     public String paymentInfo_Timeout(@PathVariable("id") Integer id) {
 
         String paymentInfo_Timeout = paymentService.paymentInfo_Timeout(id);
@@ -41,7 +38,4 @@ public class PaymentController {
         return paymentInfo_Timeout;
     }
 
-    public String paymentInfo_TimeoutHandler(Integer id){
-        return "系统繁忙或出错，请稍后再试";
-    }
 }
