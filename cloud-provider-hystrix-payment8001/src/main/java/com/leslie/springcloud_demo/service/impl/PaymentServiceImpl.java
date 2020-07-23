@@ -22,11 +22,14 @@ public class PaymentServiceImpl implements PaymentService {
     public String paymentInfo_Timeout(Integer id) {
 
         //手动控制睡眠秒数，用来模拟复杂程序的情况
-        try {
-            TimeUnit.SECONDS.sleep(3);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            TimeUnit.SECONDS.sleep(3);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+
+        //模拟运行时错误
+        int temp = 10 / 0;
 
         return "线程池:\t"+Thread.currentThread().getName()+"\tpaymentInfo_Timeout,id:\t"+id;
     }
