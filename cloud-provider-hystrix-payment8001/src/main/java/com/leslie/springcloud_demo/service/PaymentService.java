@@ -7,4 +7,6 @@ public interface PaymentService {
 
     //超时访问接口
     public String paymentInfo_Timeout(Integer id);
+
+    public String paymentCircuitBreaker(Integer id);
 }
