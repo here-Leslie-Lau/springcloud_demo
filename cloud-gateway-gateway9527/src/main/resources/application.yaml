@@ -10,7 +10,7 @@ spring:
           #uri: http://localhost:8001
           uri: lb://CLOUD-PAYMENT-SERVICE
           predicates:
-            - Cookie=username, leslie #断言，必须携带对应的cookie键值对
+            #- Cookie=username, leslie #断言，必须携带对应的cookie键值对
             - Path=/payment/port #断言,路径相匹配的进行路由
             #- After=2020-07-31T13:57:05.508+08:00[Asia/Shanghai] #断言，在这个时间之后才可执行
             #- Before=2020-07-31T13:57:05.508+08:00[Asia/Shanghai]
@@ -23,7 +23,6 @@ spring:
             #- Cookie=username, leslie
             #- Before=2020-07-31T13:57:05.508+08:00[Asia/Shanghai]
             - Path=/payment/** # 断言，路径相匹配的进行路由
-
 
       discovery:
         locator:
