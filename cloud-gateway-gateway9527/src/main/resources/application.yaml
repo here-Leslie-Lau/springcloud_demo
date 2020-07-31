@@ -6,18 +6,24 @@ spring:
   cloud:
     gateway:
       routes:
+        - id: payment_route_lb
+          #uri: http://localhost:8001
+          uri: lb://CLOUD-PAYMENT-SERVICE
+          predicates:
+            - Cookie=username, leslie #断言，必须携带对应的cookie键值对
+            - Path=/payment/port #断言,路径相匹配的进行路由
+            #- After=2020-07-31T13:57:05.508+08:00[Asia/Shanghai] #断言，在这个时间之后才可执行
+            #- Before=2020-07-31T13:57:05.508+08:00[Asia/Shanghai]
+
         - id: payment_route_get # 路由的id,没有规定规则但要求唯一,建议配合服务名
           #匹配后提供服务的路由地址
           #uri: http://localhost:8001
           uri: lb://CLOUD-PAYMENT-SERVICE
           predicates:
+            #- Cookie=username, leslie
+            #- Before=2020-07-31T13:57:05.508+08:00[Asia/Shanghai]
             - Path=/payment/** # 断言，路径相匹配的进行路由
 
-        - id: payment_route_lb
-          #uri: http://localhost:8001
-          uri: lb://CLOUD-PAYMENT-SERVICE
-          predicates:
-            - Path=/payment/port #断言,路径相匹配的进行路由
 
       discovery:
         locator:
