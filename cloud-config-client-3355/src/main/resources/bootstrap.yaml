@@ -22,3 +22,9 @@ eureka:
   instance:
     prefer-ip-address: true #在访问地址显示ip地址
     instance-id: config-client-3355
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
