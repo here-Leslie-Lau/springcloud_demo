@@ -1,0 +1,35 @@
+server:
+  port: 3366
+spring:
+  application:
+    name: cloud-config-client
+  cloud:
+    config:
+      label: master # 分支名称
+      name: config #配置文件名称
+      profile: dev # 读取的后缀，上述三个综合，为master分支上的config-dev.yml的配置文件被读取，http://config-3344.com:3344/master/config-dev.yml
+      uri: http://localhost:3344 #配置中心的地址
+
+  rabbitmq:
+    host: 10.211.55.7
+    port: 5672
+    username: guest
+    password: guest
+
+eureka:
+  client:
+    # 表示是否将自己注册进 EurekaServer 默认为 true
+    register-with-eureka: true
+    # 是否从 EurekaServer 抓取已有的注册信息，默认为 true. 单节点无所谓，集群必须设置为 true，才能配置 ribbon 使用负载均衡
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/
+  instance:
+    prefer-ip-address: true #在访问地址显示ip地址
+    instance-id: config-client-3366
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
