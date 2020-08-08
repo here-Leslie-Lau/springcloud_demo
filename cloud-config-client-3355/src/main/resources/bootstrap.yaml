@@ -11,6 +11,12 @@ spring:
       profile: dev # 读取的后缀，上述三个综合，为master分支上的config-dev.yml的配置文件被读取，http://config-3344.com:3344/master/config-dev.yml
       uri: http://localhost:3344 #配置中心的地址
 
+  rabbitmq:
+    host: 10.211.55.7
+    port: 5672
+    username: guest
+    password: guest
+
 eureka:
   client:
     # 表示是否将自己注册进 EurekaServer 默认为 true
