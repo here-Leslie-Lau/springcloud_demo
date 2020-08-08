@@ -7,10 +7,16 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/here-Leslie-Lau/springcloud-config.git
+          uri: https://github.com/here-Leslie-Lau/springcloud_config.git
           search-paths:
-            - springcloud-config
+            - springcloud_config
       label: master
+
+  rabbitmq:
+    host: 10.211.55.7
+    port: 5672
+    username: guest
+    password: guest
 
 eureka:
   client:
@@ -24,4 +30,10 @@ eureka:
     prefer-ip-address: true #在访问地址显示ip地址
     instance-id: config3344
 
+# 暴露bus刷新配置的端点
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "bus-refresh"
