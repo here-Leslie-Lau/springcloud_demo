@@ -70,4 +70,13 @@ public class OrderController {
 
         return port;
     }
+
+    //测试sleuth
+    @GetMapping("/consumer/payment/sleuth")
+    public String testSleuth(){
+
+        String result = restTemplate.getForObject("http://localhost:8001/payment/sleuth", String.class);
+
+        return result;
+    }
 }
