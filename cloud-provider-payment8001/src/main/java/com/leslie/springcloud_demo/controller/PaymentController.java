@@ -72,4 +72,10 @@ public class PaymentController {
     public String getPort(){
         return port;
     }
+
+    @GetMapping("/payment/sleuth")
+    public String sleuth(){
+        return "测试sleuth,port: "+port;
+    }
+
 }
