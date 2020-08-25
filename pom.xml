@@ -31,6 +31,7 @@
       <module>cloud-stream-rabbitmq-consumer-8803</module>
     <module>cloudalibaba-provider-payment-9001</module>
       <module>cloudalibaba-provider-payment-9002</module>
+      <module>cloudalibaba-consumer-order-83</module>
   </modules>
   <packaging>pom</packaging>
 
