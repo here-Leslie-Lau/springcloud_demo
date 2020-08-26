@@ -1,0 +1,14 @@
+server:
+  port: 3377
+
+spring:
+  application:
+    name: nacos-config-client
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 10.211.55.7:8848 #注册中心
+      config:
+        server-addr: 10.211.55.7:8848 # 配置中心
+        file-extension: yaml # 这里指定的文件格式需要和nacos上新建的配置文件后缀相同，否则读不到
